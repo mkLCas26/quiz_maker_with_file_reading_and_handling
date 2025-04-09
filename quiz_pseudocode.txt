@@ -2,13 +2,35 @@ PROGRAM GOALS:
 1. Allow user to answer a 10 items Earth Science Quiz
 2. Allow user to create their own 5 items Quiz
 3. Provide a .txt file for their quiz results 
-4. Integrate a GUI
 
 PSEUDOCODE
 
-Part 1: Plain quiz logic for pre-programmed 10 items Earth Science Quiz
+PART 1: Plain quiz logic for pre-programmed 10 items Earth Science Quiz
+import libraries
 Create Questions Class 
     define constructor 
-    question prompts list
-    question prompts, answers, and correct answer index list 
-    function to run quiz
+question prompts list
+question prompts, answers, and correct answer index list 
+function to run quiz
+    make file/folder
+    write result in file
+run file when called out on main_app
+
+PART 2: User quiz (10 items)
+import libraries
+Create Questions Class 
+    define constructor 
+function to allow user to make quiz
+    initialize needed lists and variables
+    main loop for collecting questions, answers, and right choice
+    make file/folder
+    write result in file
+run file when called out on main_app
+
+PART 3: main_app as main interface for the 2 quiz types
+import libraries and needed files
+function for clearing screen
+insert ascii art for title
+ask username
+while loop for print main menu and asking for selected option
+    if-elif-else statement to execute options 
