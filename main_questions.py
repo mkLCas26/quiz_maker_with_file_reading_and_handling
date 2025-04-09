@@ -3,7 +3,6 @@
 # import libraries
 import random
 import os
-import re 
 
 # class for quiz questions
 class SampleQuestions:
