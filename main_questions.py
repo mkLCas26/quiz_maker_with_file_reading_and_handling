@@ -54,6 +54,37 @@ sample_ques = [
         question_prompts[4],
         ["Nitrogen", "Argon", "Carbon Dioxide", "Oxygen"],
         3
+    ),
+    
+    SampleQuestions(
+        question_prompts[5],
+        ["Kangchenjunga", "Mount Ararat", "K2", "Mount Everest"],
+        3
+    ),
+    
+    SampleQuestions(
+        question_prompts[6],
+        ["About 4.54 billion years", "About 5 billion years", "About 4.6 billion years", "About 8.1 billion years"],
+        0
+    ),
+    
+    SampleQuestions(
+        question_prompts[7],
+        ["South American Plate", "North American Plate", "Pacific Plate", "African Plate"],
+        2
+    ),
+    
+    SampleQuestions(
+        question_prompts[8],
+        ["Earth", "Saturn", "Jupiter", "Uranus"],
+        1
+    ),
+    
+    SampleQuestions(
+        question_prompts[9],
+        ["Shell, Mantle, First Core, Second Core", "Crust, Mantle, Outer Core, Inner Core",
+         "Cover, Mantle, Inner Core, Outer Core", "Crust, Second Layer, Contents, Specifics"],
+        1
     )
 ]
 
