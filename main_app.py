@@ -36,12 +36,14 @@ while True:
     
     if selected == "1":
         clear_content()
+        print(test.renderText('~ Quiz Master ~'))
         input_user_quiz()
         input("\n\nPress Enter to return to Main Menu")
         clear_content()
     
     elif selected == "2":
         clear_content()
+        print(test.renderText('~ Quiz Master ~'))
         run_prequiz(sample_ques)
         input("\n\nPress Enter to return to Main Menu")
         clear_content()
