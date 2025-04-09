@@ -1,6 +1,7 @@
 # Main Quiz Logic (for user-made quiz)
 
 # import libraries
+import os
 
 # class for quiz questions
 class UseQuestions:
@@ -18,6 +19,11 @@ def input_user_quiz():
     correct_ans = []
     choices_choose = "ABCD"
     
+    print("LET'S MAKE A 10 ITEM QUIZ!")
+    
+    # Collect username
+    username = input("Enter your username: ")
+    
     for number in range(1, 11):
         print("\n--------------------")
         questions = input(f"\nEnter Question {number}: ")
@@ -34,6 +40,32 @@ def input_user_quiz():
             else:
                 correct_ans.append(correct_choice)
                 break
+    
+    # Save quiz data in a folder
+    result_folder = "result_files"
+    os.makedirs(result_folder, exist_ok=True)                  # creates folder for the user, if existing it will not resturn error
+    
+    # Filename for quiz
+    format_username = username.replace(" ", "_").lower()        # prepares username for the filename
+    user_filename = f"{format_username}_quiz"                   # formats filename with username attached
+    count_files = os.listdir(result_folder)                    # checks for other files with the same filename
+    
+    # Allows multiple quiz inputs by user by separating files
+    quiz_num = 1
+    while (f"{user_filename}{quiz_num}.txt") in count_files:    # tracks if file is already in folder and adjusts filename no.
+        quiz_num += 1
+    
+    final_filename = f"{user_filename}{quiz_num}"
+    file_path = os.path.join(result_folder, final_filename)
+    
+    # Save user's questionnaire and correct answers in file
+    with open(file_path, "w") as file:
+        file.write(f"Username: {username}\n")
+        file.write(f"Quiz Number: {quiz_num}")
+        file.write(f"\n---------- {username}'s Quiz ----------\n")
+        
+        for number, entry in enumerate()
+    
 
             
 input_user_quiz()
