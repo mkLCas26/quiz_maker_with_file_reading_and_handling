@@ -10,8 +10,6 @@ class UseQuestions:
         self.choices = choices
         self.correct = correct
 
-
-
 # function for letting the user add questions
 def input_user_quiz():
     user_question = []
@@ -64,9 +62,12 @@ def input_user_quiz():
         file.write(f"Quiz Number: {quiz_num}")
         file.write(f"\n---------- {username}'s Quiz ----------\n")
         
-        for number, entry in enumerate()
+        for item in range(10):
+            file.write(f"Question {item +1}: {user_question[item]}\n")
+            for letter in range(4):
+                file.write(f"    {chr(65 + letter)}. {choices_list[item * 4 + letter]}\n")            # gets the 4 choices assigned to question
+        file.write(f"Correct Answer: {correct_ans[item]}")
     
-
             
 input_user_quiz()
         
