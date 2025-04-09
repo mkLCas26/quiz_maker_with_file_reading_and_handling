@@ -11,7 +11,6 @@ from user_quiz import input_user_quiz
 def clear_content():
     os.system('cls' if os.name == "nt" else "clear")
 
-
 # Inserts ASCII art for title
 test = Figlet(font='elite')
 clear_content()
