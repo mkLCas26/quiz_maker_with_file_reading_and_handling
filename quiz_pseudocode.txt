@@ -1,0 +1,14 @@
+PROGRAM GOALS:
+1. Allow user to answer a 10 items Earth Science Quiz
+2. Allow user to create their own 5 items Quiz
+3. Provide a .txt file for their quiz results 
+4. Integrate a GUI
+
+PSEUDOCODE
+
+Part 1: Plain quiz logic for pre-programmed 10 items Earth Science Quiz
+Create Questions Class 
+    define constructor 
+    question prompts list
+    question prompts, answers, and correct answer index list 
+    function to run quiz
