@@ -90,6 +90,7 @@ sample_ques = [
     )
 ]
 
+# function for running the quiz
 def run_prequiz(sample_ques):
     score = 0 
     quiz_history = []
@@ -111,7 +112,7 @@ def run_prequiz(sample_ques):
             correct_letter = chr(65 + item.correct)
             print(f"Incorrect. The correct answer is {correct_letter}. {item.choices[item.correct]}\n")
             
-        quiz_history.append({
+        quiz_history.append({                                     # appends user's progress in a list
             "question": item.prompt,
             "choices": item.choices,
             "answer": user_answer,
@@ -121,6 +122,25 @@ def run_prequiz(sample_ques):
     print("--------------------")
     print(f"Congratulations! You have scored {score} out of 5 questions")
     
-# Saving user's results in a file
+    # Saving user's results in a file
+    result_folder = "result_files"                                 # initialize variable for folder
+    os.makedirs(result_folder, exist_ok=True)                      # makes folder if not present in user, if folder is present its ok
+
+    # Prepare username for filename
+    format_username = username.replace(" ", "_").lower()           # formats username       
+    user_filename = f"{format_username}_sample-quiz"               # prepares filaname
+    count_files = os.listdir(result_folder)                        # checks similar filename count
+    
+    # Puts trial number in file name incase of multiple tries
+    trial = 1
+    while (f"{user_filename}_try{trial}.txt") in count_files:
+        trial += 1
+     
+    final_filename = f"{user_filename}_try{trial}.txt"
+    file_path = os.path.join(result_folder, final_filename)        # Puts file in the folder
+    
+    # 
+ 
+
         
 run_prequiz(sample_ques)
