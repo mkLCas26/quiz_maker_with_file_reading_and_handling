@@ -102,7 +102,7 @@ def run_prequiz(sample_ques):
     for number, item in enumerate(selected_questions, 1):         # for printing questions and choices
         print(f"Question {number}: {item.prompt}")
         for letter, choice in enumerate(item.choices):
-            print(f"{chr(65 + letter)}. {choice}")
+            print(f"{    chr(65 + letter)}. {choice}")
             
         user_answer = (input(f"\nAnswer (A-D): ")).upper()
         if ord(user_answer[0]) - 65 == item.correct:              # for checking user answer
@@ -139,8 +139,18 @@ def run_prequiz(sample_ques):
     final_filename = f"{user_filename}_try{trial}.txt"
     file_path = os.path.join(result_folder, final_filename)        # Puts file in the folder
     
-    # 
- 
-
+    # Saving user's quiz history in file
+    with open(file_path, "w") as file:                             # Opens file to write the quiz history                  
+        file.write(f"Username: {username}\n")
+        file.write(f"Score: {score}/5\n")
+        file.write(f"\n---------- {username.capitalize}'s Quiz History ----------\n")
         
+        for number, entry in enumerate(quiz_history, 1):
+            file.write(f"Question {number}: {entry['question']}\n")
+            for letter, choice in enumerate(entry['choices']):
+                file.write(f"    {chr(65 + letter)}. {choice}")
+                
+            file.write(f"\nYour answer: {entry['answer']}")
+            file.write(f"\nCorrect answer: {entry['correct_choice']}\n")
+            
 run_prequiz(sample_ques)
