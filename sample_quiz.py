@@ -93,7 +93,7 @@ sample_ques = [
 def run_prequiz(sample_ques):
     score = 0 
     quiz_history = []
-    username = input("Enter your username: ")
+    username = input("Enter your username again: ")
     print("\n--------------------\n")
     
     selected_questions = random.sample(sample_ques, 5)            # for random  5 questions/10

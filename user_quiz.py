@@ -20,7 +20,7 @@ def input_user_quiz():
     print("LET'S MAKE A 10 ITEM QUIZ!\n")
     
     # Collect username
-    username = input("Enter your username: ")
+    username = input("Enter your username again: ")
     
     for number in range(1, 11):
         print("\n--------------------")
