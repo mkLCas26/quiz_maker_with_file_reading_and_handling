@@ -151,5 +151,6 @@ def run_prequiz(sample_ques):
                 
             file.write(f"\nYour answer: {entry['answer']}")
             file.write(f"\nCorrect answer: {entry['correct_choice']}\n")
-            
-run_prequiz(sample_ques)
+          
+if __name__ == "__main__":                        # only running program when called out
+    run_prequiz(sample_ques)
