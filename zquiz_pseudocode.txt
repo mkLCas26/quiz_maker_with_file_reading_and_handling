@@ -1,6 +1,6 @@
 PROGRAM GOALS:
-1. Allow user to answer a 10 items Earth Science Quiz
-2. Allow user to create their own 5 items Quiz
+1. Allow user to answer a randomized 5 items Earth Science Quiz
+2. Allow user to create their own 10 items Quiz
 3. Provide a .txt file for their quiz results 
 
 PSEUDOCODE
