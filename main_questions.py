@@ -89,4 +89,16 @@ sample_ques = [
 ]
 
 def run_prequiz(sample_ques):
+    score = 0 
+    selected_questions = random.sample(sample_ques, 5)            # for random  5 questions/10
     
+    for number, item in enumerate(selected_questions, 1):         # for printing questions and choices
+        print(f"Question {number}: {item.prompt}")
+        for letter, choice in enumerate(item.choices):
+            print(f"{chr(65 + letter)}. {choice}")
+            
+        answer = (input(f"Answer (A-D): "))
+        
+        
+
+run_prequiz(sample_ques)
