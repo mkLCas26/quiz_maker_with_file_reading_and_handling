@@ -143,12 +143,12 @@ def run_prequiz(sample_ques):
     with open(file_path, "w") as file:                             # Opens file to write the quiz history                  
         file.write(f"Username: {username}\n")
         file.write(f"Score: {score}/5\n")
-        file.write(f"\n---------- {username.capitalize}'s Quiz History ----------\n")
+        file.write(f"\n---------- {username}'s Quiz History ----------\n")
         
         for number, entry in enumerate(quiz_history, 1):
-            file.write(f"Question {number}: {entry['question']}\n")
+            file.write(f"\nQuestion {number}: {entry['question']}\n")
             for letter, choice in enumerate(entry['choices']):
-                file.write(f"    {chr(65 + letter)}. {choice}")
+                file.write(f"    {chr(65 + letter)}. {choice}\n")
                 
             file.write(f"\nYour answer: {entry['answer']}")
             file.write(f"\nCorrect answer: {entry['correct_choice']}\n")
