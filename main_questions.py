@@ -2,6 +2,8 @@
 
 # import libraries
 import random
+import os
+import re 
 
 # class for quiz questions
 class SampleQuestions:
@@ -108,7 +110,17 @@ def run_prequiz(sample_ques):
         else:
             correct_letter = chr(65 + item.correct)
             print(f"Incorrect. The correct answer is {correct_letter}. {item.choices[item.correct]}\n")
+            
+        quiz_history.append({
+            "question": item.prompt,
+            "choices": item.choices,
+            "answer": user_answer,
+            "correct_choice": f"{correct_letter}. {item.choices[item.correct]}" 
+        })
+        
     print("--------------------")
     print(f"Congratulations! You have scored {score} out of 5 questions")
+    
+# Saving user's results in a file
         
 run_prequiz(sample_ques)
