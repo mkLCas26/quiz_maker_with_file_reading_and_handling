@@ -97,8 +97,12 @@ def run_prequiz(sample_ques):
         for letter, choice in enumerate(item.choices):
             print(f"{chr(65 + letter)}. {choice}")
             
-        answer = (input(f"Answer (A-D): "))
+        user_answer = (input(f"\nAnswer (A-D): ")).upper()
+        if ord(user_answer[0]) - 65 == item.correct:              # for checking user answer
+            score += 1
+            print("Correct!\n")
+        else:
+            correct_letter = chr(65 + item.correct)
+            print(f"Incorrect. The correct answer is {correct_letter}. {item.choices[item.correct]}\n")
         
-        
-
 run_prequiz(sample_ques)
