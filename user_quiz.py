@@ -9,7 +9,22 @@ class UseQuestions:
         self.choices = choices
         self.correct = correct
 
-user_question = []
+
 
 # function for letting the user add questions
 def input_user_quiz():
+    user_question = []
+    choices_list = []
+    
+    for number in range(1, 11):
+        questions = input(f"\nEnter Question {number}: ")
+        user_question.append(questions)
+        
+        for letter in range(4):
+            choices = input(f"  Enter Choice {chr(65 + letter)}: ")
+            choices_list.append(choices)
+
+    correct_choice = input(f"What is the correct answer for this question (A/B/C/D)? ").upper()
+            
+input_user_quiz()
+        
