@@ -17,7 +17,7 @@ def input_user_quiz():
     correct_ans = []
     choices_choose = "ABCD"
     
-    print("LET'S MAKE A 10 ITEM QUIZ!")
+    print("LET'S MAKE A 10 ITEM QUIZ!\n")
     
     # Collect username
     username = input("Enter your username: ")
@@ -46,7 +46,7 @@ def input_user_quiz():
     # Filename for quiz
     format_username = username.replace(" ", "_").lower()        # prepares username for the filename
     user_filename = f"{format_username}_quiz"                   # formats filename with username attached
-    count_files = os.listdir(result_files)                    # checks for other files with the same filename
+    count_files = os.listdir(result_files)                      # checks for other files with the same filename
     
     # Allows multiple quiz inputs by user by separating files
     quiz_num = 1
@@ -63,11 +63,10 @@ def input_user_quiz():
         file.write(f"\n---------- {username}'s Quiz ----------\n")
         
         for item in range(10):
-            file.write(f"\nQuestion {item +1}: {user_question[item]}\n")
+            file.write(f"\nQuestion {item +1}: {user_question[item]}\n")                              # gets the question per index
             for letter in range(4):
                 file.write(f"    {chr(65 + letter)}. {choices_list[item * 4 + letter]}\n")            # gets the 4 choices assigned to question
             file.write(f"Correct Answer: {correct_ans[item]}\n")
-    
-            
+        
 input_user_quiz()
         
