@@ -67,6 +67,7 @@ def input_user_quiz():
             for letter in range(4):
                 file.write(f"    {chr(65 + letter)}. {choices_list[item * 4 + letter]}\n")            # gets the 4 choices assigned to question
             file.write(f"Correct Answer: {correct_ans[item]}\n")
+    print(f"\nYour quiz now is now accesible in the result_folder with the filename {final_filename}")
 
 if __name__ == "__main__":                        # only running program when called out
     input_user_quiz()

@@ -119,7 +119,7 @@ def run_prequiz(sample_ques):
         })
         
     print("--------------------")
-    print(f"Congratulations! You have scored {score} out of 5 questions")
+    print(f"Congratulations! You have scored {score} out of 5 questions.")
     
     # Saving user's results in a file
     result_files = "result_folder"                                 # initialize variable for folder
@@ -151,6 +151,7 @@ def run_prequiz(sample_ques):
                 
             file.write(f"\nYour answer: {entry['answer']}")
             file.write(f"\nCorrect answer: {entry['correct_choice']}\n")
+    print(f"\nYour quiz history is now accesible in the result_folder with the filename {final_filename}")
           
 if __name__ == "__main__":                        # only running program when called out
     run_prequiz(sample_ques)
