@@ -29,7 +29,8 @@ while True:
     print(f"What would you like to do?")
     print(f"   [1] Create Quiz (10 Questions)")
     print(f"   [2] Take Sample Quiz (Random 5 Items Science Quiz)")
-    print(f"   [3] Exit")
+    print(f"   [3] Answer Your Created Quiz")
+    print(f"   [4] Exit")
     
     selected = input("Select an option (1-3): ")
     
@@ -48,6 +49,13 @@ while True:
         clear_content()
         
     elif selected == "3":
+        clear_content()
+        print(test.renderText('~ Quiz Master ~'))
+        print("\n\nThis feature will be revealed soon...!")
+        input("\n\nPress Enter to return to Main Menu")
+        clear_content()
+    
+    elif selected == "4":
         print(f"\n\nAww! Thank you for playing, see you soon {username}!")
         break
     
