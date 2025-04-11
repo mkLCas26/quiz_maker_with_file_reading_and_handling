@@ -32,7 +32,7 @@ while True:
     print(f"   [3] Answer Your Created Quiz")
     print(f"   [4] Exit")
     
-    selected = input("Select an option (1-3): ")
+    selected = input("Select an option (1-4): ")
     
     if selected == "1":
         clear_content()
