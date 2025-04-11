@@ -93,6 +93,7 @@ sample_ques = [
 def run_prequiz(sample_ques):
     score = 0 
     quiz_history = []
+    correct_letter = ""
     username = input("Enter your username again: ")
     print("\n--------------------\n")
     
