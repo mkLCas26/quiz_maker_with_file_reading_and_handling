@@ -21,6 +21,7 @@ def input_user_quiz():
     
     # Collect username
     username = input("Enter your username again: ")
+    title = input("Enter the title of your quiz (Ex: Friendship): ")
     
     for number in range(1, 11):
         print("\n--------------------")
@@ -44,8 +45,8 @@ def input_user_quiz():
     os.makedirs(result_files, exist_ok=True)                  # creates folder for the user, if existing it will not resturn error
     
     # Filename for quiz
-    format_username = username.replace(" ", "_").lower()        # prepares username for the filename
-    user_filename = f"{format_username}_quiz"                   # formats filename with username attached
+    format_title = title.replace(" ", "_").lower()        # prepares username for the filename
+    user_filename = f"{format_title}_quiz"                   # formats filename with username attached
     count_files = os.listdir(result_files)                      # checks for other files with the same filename
     
     # Allows multiple quiz inputs by user by separating files
@@ -60,7 +61,7 @@ def input_user_quiz():
     with open(file_path, "w") as file:
         file.write(f"Username: {username}\n")
         file.write(f"Quiz Number: {quiz_num}")
-        file.write(f"\n---------- {username}'s Quiz ----------\n")
+        file.write(f"\n---------- {title} Quiz ----------\n")
         
         for item in range(10):
             file.write(f"\nQuestion {item +1}: {user_question[item]}\n")                              # gets the question per index
