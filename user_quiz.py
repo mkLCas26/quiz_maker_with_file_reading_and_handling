@@ -69,6 +69,14 @@ def input_user_quiz():
                 file.write(f"    {chr(65 + letter)}. {choices_list[item * 4 + letter]}\n")            # gets the 4 choices assigned to question
             file.write(f"Correct Answer: {correct_ans[item]}\n")
     print(f"\nYour quiz now is now accesible in the result_folder with the filename {final_filename}")
+    
+    edit_notice = input("\nDo you wish to edit this file right now? [Y/N]: ").upper().strip()
+    
+    if edit_notice == "Y":
+        os.system(f'notepad "{file_path}"')
+        print("Press Enter once you're done editing...")
+    else:
+        print("Okay! File saved without further edits made.")
 
 if __name__ == "__main__":                        # only running program when called out
     input_user_quiz()
