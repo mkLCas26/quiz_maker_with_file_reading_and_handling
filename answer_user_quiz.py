@@ -17,4 +17,22 @@ def list_avail_quizzes():
         print("\nThere's no quizzes created yet.")
         return None
     
+    # giving user a printed list of quiz files
+    print("\nSaved Quiz Files:")
+    for count in range(len(quizzes)):
+        print(f"[{count} + 1] {quizzes[count]}")
+     
+    # allows user to select quiz file   
+    while True:
+        try:
+            select = int(input("\nEnter the assigned number of the quiz you want to take: "))
+            
+            if 1 <= select <= len(quizzes):
+                return os.path.join("result_folder", quizzes[select - 1])
+            else:
+                print("Invalid. Try Again.")
+                
+        except ValueError:
+            print("Only enter numbers.")
+    
     
