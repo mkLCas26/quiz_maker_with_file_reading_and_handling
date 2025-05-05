@@ -10,7 +10,7 @@ def list_avail_quizzes():
     
     # checks if result_folder contains quiz files
     for file in os.listdir("result_folder"):
-        if file.endswith(".txt"):
+        if file.endswith(".txt") and file != "!ReadMe.txt":
             quizzes.append(file)
     
     if not quizzes:
@@ -20,7 +20,7 @@ def list_avail_quizzes():
     # giving user a printed list of quiz files
     print("\nSaved Quiz Files:")
     for count in range(len(quizzes)):
-        print(f"[{count} + 1] {quizzes[count]}")
+        print(f"[{count + 1}] {quizzes[count]}")
      
     # allows user to select quiz file   
     while True:
@@ -33,6 +33,4 @@ def list_avail_quizzes():
                 print("Invalid. Try Again.")
                 
         except ValueError:
-            print("Only enter numbers.")
-    
-    
+            print("Only enter numbers. Try Again.")
