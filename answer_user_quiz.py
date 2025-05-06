@@ -38,40 +38,40 @@ def list_avail_quizzes():
 # function that loads/readies selected quiz file for answering     
 def load_selected_quiz(quiz_file):
     questions = []
-    with open(quiz_file, "r") as file:                                       # opens and reads quiz file selected
+    with open(quiz_file, "r") as file:                                  # opens and reads quiz file selected
         lines = file.readlines()
     
     questions = []
     index = 0
     
-    while index < len(lines):                                                # main loop for reading file lines
+    while index < len(lines):                                           # main loop for reading file lines
         start_line = lines[index].strip()
         
-        if start_line.startswith("Question: "):                              # extracts the question prompt
+        if start_line.startswith("Question: "):                         # extracts the question prompt
             prompt = start_line[len("Question: "):].strip()
             
-            choices = []                                                     # for loop for extracting choices and storing it in a list
+            choices = []                                                # for loop for extracting choices and storing it in a list
             for _ in range(4):
                 choices_line = lines[index].strip()
                 choices.append(choices_line)
                 index += 1
             
-            answer_line = lines[index].strip()                               # extracts the correct answer
+            answer_line = lines[index].strip()                          # extracts the correct answer
             correct = answer_line[("Correct Answer: "):].strip()
             index += 1
             
-            questions.append((prompt, choices, correct))                     # stores all the question into 1 list
+            questions.append((prompt, choices, correct))                # stores all the question into 1 list
         
         index += 1
     return questions
 
 # function that makes the user answer their selected quiz
 def answer_selected_quiz():
-    quiz_file = list_avail_quizzes()                                         # gets the filepath of selected quiz
+    quiz_file = list_avail_quizzes()                                    # gets the filepath of selected quiz
     if quiz_file is None:
         return
     
-    print(f"\nLoading your selected quiz: {quiz_file}")                      # shuffles the 10 quetions of user
+    print(f"\nLoading your selected quiz: {quiz_file}")                 # shuffles the 10 quetions of user
     questions = load_selected_quiz(quiz_file)
     random.shuffle(questions)
       
@@ -82,15 +82,15 @@ def answer_selected_quiz():
     print("\n--------------------\n")
     
     for number, item in enumerate(questions, 1):                             
-        prompt = item[0]                                                     # ensures the correct order of prompt, choices, and answer
+        prompt = item[0]                                                # ensures the correct order of prompt, choices, and answer
         choices = item[1]
         correct_ans = item[2]
         
-        print(f"Question {number}: {prompt}")                                # loop to print questions and choices
+        print(f"Question {number}: {prompt}")                           # loop to print questions and choices
         for letter, choice in enumerate(choices):
             print(f"{    chr(65 + letter)}. {choice}")
             
-        user_answer = (input(f"\nAnswer (A-D): ")).upper()                   # checking of user's answer
+        user_answer = (input(f"\nAnswer (A-D): ")).upper()              # checking of user's answer
         if ord(user_answer[0]) - 65 == item.correct:
             score += 1
             print("Correct!\n")
