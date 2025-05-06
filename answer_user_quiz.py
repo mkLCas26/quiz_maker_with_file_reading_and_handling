@@ -3,6 +3,17 @@
 # import libraries
 import os
 import random
+from colorama import Fore, Style, init
+from pyfiglet import Figlet
+import time
+
+# initialize and colorama and style of figlet
+init(autoreset=True)
+test = Figlet(font='elite')
+
+# function for clearing screen
+def clear_content():
+    os.system('cls' if os.name == "nt" else "clear")
 
 # function for clearing screen
 def clear_content():
@@ -23,26 +34,26 @@ def list_avail_quizzes():
             quizzes.append(file)
              
     if not quizzes:
-        print("\nThere's no quizzes created yet.")
+        print(f"\n{Fore.RED}There's no quizzes created yet 💔 .")
         return None
     
     # giving user a printed list of quiz files
-    print("\nSaved Quiz Files:")
+    print(f"\n{Fore.MAGENTA}Saved Quiz Files 📁 :")
     for count in range(len(quizzes)):
         print(f"[{count + 1}] {quizzes[count]}")
      
     # allows user to select quiz file   
     while True:
         try:
-            select = int(input("\nEnter the assigned number of the quiz you want to take: "))
+            select = int(input(f"\nEnter the assigned number of the quiz you want to take 🤸 : "))
             
             if 1 <= select <= len(quizzes):
                 return os.path.join("result_folder", quizzes[select - 1])
             else:
-                print("Invalid. Try Again.")
+                print(f"{Fore.RED}Invalid ❌ . Try Again 🔄️ .")
                 
         except ValueError:
-            print("Only enter numbers. Try Again.")
+            print(f"{Fore.RED}Only enter numbers 🔢 . Try Again 🔄️ .")
 
 # function that loads/readies selected quiz file for answering     
 def load_selected_quiz(quiz_file):
@@ -91,34 +102,41 @@ def answer_selected_quiz():
     if quiz_file is None:
         return
     
-    print(f"\nLoading your selected quiz: {quiz_file}")                 # shuffles the 10 quetions of user
+    print(f"\nLoading your selected quiz: {Fore.BLUE + quiz_file}")                 # shuffles the 10 quetions of user
     questions = load_selected_quiz(quiz_file)
+    clear_content()
     random.shuffle(questions)
       
     score = 0
     quiz_history = []
     correct_letter = ""
+    
+    print(Fore.MAGENTA + test.renderText('~ Quiz Master ~') + Style.RESET_ALL)
+    
     username = input("\nEnter your username again: ")
-    print("\n--------------------\n")
     
     for number, item in enumerate(questions, 1):
         clear_content()
-                                     
+        
+        print(Fore.MAGENTA + test.renderText('~ Quiz Master ~') + Style.RESET_ALL)
+                                
         prompt = item[0]                                                # ensures the correct order of prompt, choices, and answer
         choices = item[1]
         correct_ans = item[2]
         
-        print(f"Question {number}: {prompt}")                           # loop to print questions and choices
+        print(f"\n\n{Fore.BLUE}Question {number}: {prompt}")                           # loop to print questions and choices
         for letter, choice in enumerate(choices):
             print(f"{    chr(65 + letter)}. {choice}")
             
-        user_answer = (input(f"\nAnswer (A-D): ")).upper()              # checking of user's answer
+        user_answer = (input(f"\n{Fore.CYAN}Answer (A-D): ")).upper()              # checking of user's answer
         if ord(user_answer[0]) - 65 == correct_ans:
             score += 1
-            print("Correct!\n")
+            print(f"{Fore.GREEN}Correct! ✅\n")
         else:
             correct_letter = chr(65 + correct_ans )
-            print(f"Incorrect. The correct answer is {correct_letter}. {choices[correct_ans]}\n")
+            print(f"{Fore.RED}Incorrect ❌ . {Fore.WHITE}The correct answer is {Fore.GREEN + correct_letter}. {Fore.GREEN + choices[correct_ans]}\n")
+        
+        time.sleep(1)
         
         quiz_history.append({                                                # appends user's quiz history in a list
             "question": prompt,
@@ -128,7 +146,7 @@ def answer_selected_quiz():
         })
 
     print("--------------------")
-    print(f"Congratulations! You have scored {score} out of 10 questions.")  
+    print(f"{Fore.YELLOW}Congratulations 🎉 ! You have scored {Fore.GREEN}{score} {Fore.YELLOW}out of {Fore.GREEN}5 questions.")  
     
     # Save user's results in a file
     result_files = "result_folder"
@@ -162,7 +180,7 @@ def answer_selected_quiz():
             
             file.write(f"\nYour answer: {entry['answer']}")
             file.write(f"\nCorrect answer: {entry['correct_choice']}")
-    print(f"\nYour quiz history is now accesible in the result_folder with the filename {final_filename}")
+    print(f"\n{Fore.CYAN}Your quiz history is now accesible in the result_folder with the filename {Fore.WHITE + final_filename} 📁.")
             
 if __name__ == "__main__":      
     answer_selected_quiz()
