@@ -3,6 +3,13 @@
 # import libraries
 import random
 import os
+from colorama import Fore, Style, init
+from pyfiglet import Figlet
+import time
+
+# initialize and colorama and style of figlet
+init(autoreset=True)
+test = Figlet(font='elite')
 
 # function for clearing screen
 def clear_content():
@@ -106,17 +113,21 @@ def run_prequiz(sample_ques):
     for number, item in enumerate(selected_questions, 1):         # for printing questions and choices
         clear_content()
         
-        print(f"Question {number}: {item.prompt}")
+        print(Fore.MAGENTA + test.renderText('~ Quiz Master ~') + Style.RESET_ALL) 
+        
+        print(f"\n\n{Fore.BLUE}Question {number}: {item.prompt}")
         for letter, choice in enumerate(item.choices):
             print(f"{    chr(65 + letter)}. {choice}")
             
-        user_answer = (input(f"\nAnswer (A-D): ")).upper()
+        user_answer = (input(f"{Fore.CYAN}\nAnswer (A-D): ")).upper()
         if ord(user_answer[0]) - 65 == item.correct:              # for checking user answer
             score += 1
-            print("Correct!\n")
+            print(f"{Fore.GREEN}Correct! ✅\n")
         else:
             correct_letter = chr(65 + item.correct)
-            print(f"Incorrect. The correct answer is {correct_letter}. {item.choices[item.correct]}\n")
+            print(f"{Fore.RED}Incorrect ❌ .{Fore.WHITE} The correct answer is {Fore.GREEN + correct_letter}. {Fore.GREEN + item.choices[item.correct]}\n")
+        
+        time.sleep(1)
             
         quiz_history.append({                                     # appends user's progress in a list
             "question": item.prompt,
@@ -126,7 +137,7 @@ def run_prequiz(sample_ques):
         })
         
     print("--------------------")
-    print(f"Congratulations! You have scored {score} out of 5 questions.")
+    print(f"{Fore.YELLOW}Congratulations 🎉! You have scored {Fore.GREEN}{score} {Fore.YELLOW}out of {Fore.GREEN}5 questions.")
     
     # Saving user's results in a file
     result_files = "result_folder"                                 # initialize variable for folder
@@ -158,7 +169,7 @@ def run_prequiz(sample_ques):
                 
             file.write(f"\nYour answer: {entry['answer']}")
             file.write(f"\nCorrect answer: {entry['correct_choice']}\n")
-    print(f"\nYour quiz history is now accesible in the result_folder with the filename {final_filename}")
+    print(f"\n{Fore.CYAN}Your quiz history is now accesible in the result_folder with the filename {Fore.WHITE + final_filename} 📁.")
           
 if __name__ == "__main__":                        # only running program when called out
     run_prequiz(sample_ques)
