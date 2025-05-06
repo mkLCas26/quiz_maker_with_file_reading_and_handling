@@ -4,6 +4,10 @@
 import os
 import random
 
+# function for clearing screen
+def clear_content():
+    os.system('cls' if os.name == "nt" else "clear")
+
 # function that allows user to choose a quiz file from folder
 def list_avail_quizzes():
     quizzes = []
@@ -97,7 +101,9 @@ def answer_selected_quiz():
     username = input("\nEnter your username again: ")
     print("\n--------------------\n")
     
-    for number, item in enumerate(questions, 1):                             
+    for number, item in enumerate(questions, 1):
+        clear_content()
+                                     
         prompt = item[0]                                                # ensures the correct order of prompt, choices, and answer
         choices = item[1]
         correct_ans = item[2]

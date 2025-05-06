@@ -4,6 +4,10 @@
 import random
 import os
 
+# function for clearing screen
+def clear_content():
+    os.system('cls' if os.name == "nt" else "clear")
+
 # class for quiz questions
 class SampleQuestions:
     def __init__(self, prompt, choices, correct):
@@ -100,6 +104,8 @@ def run_prequiz(sample_ques):
     selected_questions = random.sample(sample_ques, 5)            # for random  5 questions/10
  
     for number, item in enumerate(selected_questions, 1):         # for printing questions and choices
+        clear_content()
+        
         print(f"Question {number}: {item.prompt}")
         for letter, choice in enumerate(item.choices):
             print(f"{    chr(65 + letter)}. {choice}")
