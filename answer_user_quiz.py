@@ -44,27 +44,38 @@ def load_selected_quiz(quiz_file):
         lines = file.readlines()
     
     questions = []
+    count = 1
     index = 0
     
     while index < len(lines):                                           # main loop for reading file lines
         start_line = lines[index].strip()
         
-        if start_line.startswith("Question: "):                         # extracts the question prompt
-            prompt = start_line[len("Question: "):].strip()
+        if start_line.startswith(f"Question {count}: "):                         # extracts the question prompt
+            prompt = start_line[len(f"Question {count}: "):].strip()
+            count += 1
+            index += 1
             
             choices = []                                                # for loop for extracting choices and storing it in a list
             for _ in range(4):
-                choices_line = lines[index].strip()
-                choices.append(choices_line)
+                line = lines[index].strip()
+                
+                if "." in line:
+                    choices.append(line.split('.', 1)[1].strip())
+                else:
+                    choices.append(line)
+                    
                 index += 1
-            
-            answer_line = lines[index].strip()                          # extracts the correct answer
-            correct = answer_line[("Correct Answer: "):].strip()
+             
+            # answer_line = lines[index].strip()                          # extracts the correct answer
+            if lines[index].startswith("Correct Answer: "):
+                correct_answer = lines[index].strip()[len("Correct Answer: "):].strip()
+                correct = ord(correct_answer.upper()) - 65
             index += 1
             
             questions.append((prompt, choices, correct))                # stores all the question into 1 list
         
-        index += 1
+        else:
+            index += 1
     return questions
 
 # function that makes the user answer their selected quiz
@@ -93,18 +104,18 @@ def answer_selected_quiz():
             print(f"{    chr(65 + letter)}. {choice}")
             
         user_answer = (input(f"\nAnswer (A-D): ")).upper()              # checking of user's answer
-        if ord(user_answer[0]) - 65 == item.correct:
+        if ord(user_answer[0]) - 65 == correct_ans:
             score += 1
             print("Correct!\n")
         else:
             correct_letter = chr(65 + correct_ans )
-            print(f"Incorrect. The correct answer is {correct_letter}. {choice[correct_ans]}\n")
+            print(f"Incorrect. The correct answer is {correct_letter}. {choices[correct_ans]}\n")
         
         quiz_history.append({                                                # appends user's quiz history in a list
             "question": prompt,
             "choices": choices,
             "answer": user_answer,
-            "correct_choice": f"{correct_letter}. {choice[correct_ans]}"  
+            "correct_choice": f"{correct_letter}. {choices[correct_ans]}"  
         })
 
     print("--------------------")
