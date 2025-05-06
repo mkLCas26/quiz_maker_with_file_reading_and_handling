@@ -126,10 +126,11 @@ def answer_selected_quiz():
     
     final_filename = f"{user_filename}_try{trial}.txt"
     file_path = os.path.join(result_files, final_filename)
+    quiz_title = os.path.basename(quiz_file)                           # extracts quiz title
     
     # Save user's quiz history in file
     with open(file_path, "w") as file:
         file.write(f"Username: {username}\n")
-        file.write
+        file.write(f"Quiz Taken: {quiz_title}\n")
     
     
