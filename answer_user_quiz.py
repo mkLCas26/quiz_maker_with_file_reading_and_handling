@@ -129,8 +129,20 @@ def answer_selected_quiz():
     quiz_title = os.path.basename(quiz_file)                           # extracts quiz title
     
     # Save user's quiz history in file
-    with open(file_path, "w") as file:
+    with open(file_path, "w") as file:                                        # opens file and writes quiz history
         file.write(f"Username: {username}\n")
         file.write(f"Quiz Taken: {quiz_title}\n")
+        file.write(f"Score: {score}/10\n")
+        file.write(f"\n---------- {username}'s Quiz History ----------\n")    
+        
+        for number, entry in enumerate(quiz_history, 1):
+            file.write(f"\nQuestion {number}: {entry['question']}\n")
+            for letter, choice in enumerate(entry['choices']):
+                file.write(f"    {chr(65 + letter)}. {choice}\n") 
+            
+            file.write(f"\nYour answer: {entry['answer']}")
+            file.write(f"\nCorrect answer: {entry['correct_choice']}")
+    print(f"\nYour quiz history is now accesible in the result_folder with the filename {final_filename}")
+            
     
-    
+answer_selected_quiz()
