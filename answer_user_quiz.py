@@ -158,5 +158,5 @@ def answer_selected_quiz():
             file.write(f"\nCorrect answer: {entry['correct_choice']}")
     print(f"\nYour quiz history is now accesible in the result_folder with the filename {final_filename}")
             
-    
-answer_selected_quiz()
+if __name__ == "__main__":      
+    answer_selected_quiz()

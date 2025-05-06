@@ -6,6 +6,7 @@ import time
 from pyfiglet import Figlet
 from sample_quiz import run_prequiz, sample_ques
 from user_quiz import input_user_quiz
+from answer_user_quiz import answer_selected_quiz
 
 # function for clearing screen 
 def clear_content():
@@ -51,7 +52,7 @@ while True:
     elif selected == "3":
         clear_content()
         print(test.renderText('~ Quiz Master ~'))
-        print("\n\nThis feature will be revealed soon...!")
+        answer_selected_quiz()
         input("\n\nPress Enter to return to Main Menu")
         clear_content()
     
