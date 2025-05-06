@@ -80,3 +80,21 @@ def answer_selected_quiz():
     correct_letter = ""
     username = input("\nEnter your username again: ")
     print("\n--------------------\n")
+    
+    for number, item in enumerate(questions, 1):                             
+        prompt = item[0]                                                     # ensures the correct order of prompt, choices, and answer
+        choices = item[1]
+        correct_ans = item[2]
+        
+        print(f"Question {number}: {prompt}")                                # loop to print questions and choices
+        for letter, choice in enumerate(choices):
+            print(f"{    chr(65 + letter)}. {choice}")
+            
+        user_answer = (input(f"\nAnswer (A-D): ")).upper()                   # checking of user's answer
+        if ord(user_answer[0]) - 65 == item.correct:
+            score += 1
+            print("Correct!\n")
+        else:
+            correct_letter = chr(65 + correct_ans )
+            print(f"Incorrect. The correct answer is {correct_letter}. {choice[correct_ans]}\n")
+            
