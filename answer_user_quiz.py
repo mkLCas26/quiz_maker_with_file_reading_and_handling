@@ -34,3 +34,33 @@ def list_avail_quizzes():
                 
         except ValueError:
             print("Only enter numbers. Try Again.")
+
+# function that loads/readies selected quiz file for answering     
+def load_selected_quiz(quiz_file):
+    questions = []
+    with open(quiz_file, "r") as file:
+        lines = file.readlines()
+    
+    questions = []
+    index = 0
+    
+    while index < len(lines):
+        start_line = lines[index].strip()
+        
+        if start_line.startswith("Question: "):
+            prompt = start_line[len("Question: "):].strip()
+            
+            choices = []
+            for _ in range(4):
+                choices_line = lines[index].strip()
+                choices.append(choices_line)
+                index += 1
+            
+            answer_line = lines[index].strip()
+            correct = answer_line[("Correct Answer: "):].strip()
+            index += 1
+            
+            questions.append((prompt, choices, correct)) 
+        
+        index += 1
+    return questions  
