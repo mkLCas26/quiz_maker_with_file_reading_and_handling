@@ -10,10 +10,13 @@ def list_avail_quizzes():
     
     # checks if result_folder contains quiz files
     for file in os.listdir("result_folder"):
-        if file.endswith(".txt") and (file != "!ReadMe.txt") and "sample-quiz" not in file:
+        if (
+            file.endswith(".txt")
+            and (file != "!ReadMe.txt")
+            and "sample-quiz" not in file
+            and "result" not in file
+        ):
             quizzes.append(file)
-        # elif (file == "!ReadMe.txt") and file.find("sample-quiz"):
-        #     quizzes.remove(file)
              
     if not quizzes:
         print("\nThere's no quizzes created yet.")
