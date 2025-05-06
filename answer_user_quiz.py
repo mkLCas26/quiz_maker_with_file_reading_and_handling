@@ -10,9 +10,11 @@ def list_avail_quizzes():
     
     # checks if result_folder contains quiz files
     for file in os.listdir("result_folder"):
-        if file.endswith(".txt") and file != "!ReadMe.txt":
+        if file.endswith(".txt") and (file != "!ReadMe.txt") and "sample-quiz" not in file:
             quizzes.append(file)
-    
+        # elif (file == "!ReadMe.txt") and file.find("sample-quiz"):
+        #     quizzes.remove(file)
+             
     if not quizzes:
         print("\nThere's no quizzes created yet.")
         return None
@@ -98,3 +100,4 @@ def answer_selected_quiz():
             correct_letter = chr(65 + correct_ans )
             print(f"Incorrect. The correct answer is {correct_letter}. {choice[correct_ans]}\n")
             
+list_avail_quizzes()
