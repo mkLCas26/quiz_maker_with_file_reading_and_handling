@@ -109,3 +109,27 @@ def answer_selected_quiz():
 
     print("--------------------")
     print(f"Congratulations! You have scored {score} out of 10 questions.")  
+    
+    # Save user's results in a file
+    result_files = "result_folder"
+    os.makedirs(result_files, exist_ok=True)
+    
+    # Prepare username for filename
+    format_username = username.replace(" ", "_").lower()
+    user_filename = f"{format_username}_result"
+    count_files = os.listdir(result_files)
+    
+    # Adds trial number in filename
+    trial = 1
+    while (f"{user_filename}_try{trial}.txt") in count_files:
+        trial +=1
+    
+    final_filename = f"{user_filename}_try{trial}.txt"
+    file_path = os.path.join(result_files, final_filename)
+    
+    # Save user's quiz history in file
+    with open(file_path, "w") as file:
+        file.write(f"Username: {username}\n")
+        file.write
+    
+    
