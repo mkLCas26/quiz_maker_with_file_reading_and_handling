@@ -38,29 +38,29 @@ def list_avail_quizzes():
 # function that loads/readies selected quiz file for answering     
 def load_selected_quiz(quiz_file):
     questions = []
-    with open(quiz_file, "r") as file:
+    with open(quiz_file, "r") as file:                                       # opens and reads quiz file selected
         lines = file.readlines()
     
     questions = []
     index = 0
     
-    while index < len(lines):
+    while index < len(lines):                                                # main loop for reading file lines
         start_line = lines[index].strip()
         
-        if start_line.startswith("Question: "):
+        if start_line.startswith("Question: "):                              # extracts the question prompt
             prompt = start_line[len("Question: "):].strip()
             
-            choices = []
+            choices = []                                                     # for loop for extracting choices and storing it in a list
             for _ in range(4):
                 choices_line = lines[index].strip()
                 choices.append(choices_line)
                 index += 1
             
-            answer_line = lines[index].strip()
+            answer_line = lines[index].strip()                               # extracts the correct answer
             correct = answer_line[("Correct Answer: "):].strip()
             index += 1
             
-            questions.append((prompt, choices, correct)) 
+            questions.append((prompt, choices, correct))                     # stores all the question into 1 list
         
         index += 1
     return questions  
