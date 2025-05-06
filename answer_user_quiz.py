@@ -99,5 +99,13 @@ def answer_selected_quiz():
         else:
             correct_letter = chr(65 + correct_ans )
             print(f"Incorrect. The correct answer is {correct_letter}. {choice[correct_ans]}\n")
-            
-list_avail_quizzes()
+        
+        quiz_history.append({                                                # appends user's quiz history in a list
+            "question": prompt,
+            "choices": choices,
+            "answer": user_answer,
+            "correct_choice": f"{correct_letter}. {choice[correct_ans]}"  
+        })
+
+    print("--------------------")
+    print(f"Congratulations! You have scored {score} out of 10 questions.")  
