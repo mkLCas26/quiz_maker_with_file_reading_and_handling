@@ -63,4 +63,20 @@ def load_selected_quiz(quiz_file):
             questions.append((prompt, choices, correct))                     # stores all the question into 1 list
         
         index += 1
-    return questions  
+    return questions
+
+# function that makes the user answer their selected quiz
+def answer_selected_quiz():
+    quiz_file = list_avail_quizzes()                                         # gets the filepath of selected quiz
+    if quiz_file is None:
+        return
+    
+    print(f"\nLoading your selected quiz: {quiz_file}")                      # shuffles the 10 quetions of user
+    questions = load_selected_quiz(quiz_file)
+    random.shuffle(questions)
+      
+    score = 0
+    quiz_history = []
+    correct_letter = ""
+    username = input("\nEnter your username again: ")
+    print("\n--------------------\n")
