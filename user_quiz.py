@@ -2,6 +2,11 @@
 
 # import libraries
 import os
+from colorama import Fore, Style, init
+import time
+
+# initialize and colorama and style of figlet
+init(autoreset=True)
 
 # class for quiz questions
 class UseQuestions:
@@ -17,14 +22,14 @@ def input_user_quiz():
     correct_ans = []
     choices_choose = "ABCD"
     
-    print("LET'S MAKE A 10 ITEM QUIZ!\n")
+    print(f"{Fore.GREEN}🔥🔥🔥 LET'S MAKE A 10 ITEM QUIZ! 🔥🔥🔥\n")
     
     # Collect username
     username = input("Enter your username again: ")
     title = input("Enter the title of your quiz (Ex: Friendship): ")
     
     for number in range(1, 11):
-        print("\n--------------------")
+        print(f"\n{Fore.YELLOW}--------------------")
         questions = input(f"\nEnter Question {number}: ")
         user_question.append(questions)
         
@@ -33,9 +38,9 @@ def input_user_quiz():
             choices_list.append(choices)
             
         while True:
-            correct_choice = input(f"\nWhat is the correct answer for this question? ").upper()
+            correct_choice = input(f"\n{Fore.CYAN}What is the correct answer for this question? ").upper()
             if correct_choice not in choices_choose:
-                print(f"'{correct_choice}' is invalid. Only choose between A, B, C, and D.")
+                print(f"{Fore.RED}'{Fore.WHITE + correct_choice}{Fore.RED}' is invalid ❌ . {Fore.GREEN}Only choose between A, B, C, and D 🔄️ .")
             else:
                 correct_ans.append(correct_choice)
                 break
@@ -68,23 +73,25 @@ def input_user_quiz():
             for letter in range(4):
                 file.write(f"    {chr(65 + letter)}. {choices_list[item * 4 + letter]}\n")            # gets the 4 choices assigned to question
             file.write(f"Correct Answer: {correct_ans[item]}\n")
-    print(f"\nYour quiz now is now accesible in the result_folder with the filename {final_filename}")
-    print("\n--------------------")
+    print(f"\n{Fore.CYAN}Your quiz now is now accesible in the result_folder with the filename {Fore.WHITE + final_filename} 📁.")
+    print(f"\n{Fore.YELLOW}--------------------")
+    
+    time.sleep(0.5)
     
     while True:
-        edit_notice = input("\nDo you wish to edit this file right now? [Y/N]: ").upper().strip()
+        edit_notice = input("\nDo you wish to edit this file right now 💭 ? [Y/N]: ").upper().strip()
     
         if edit_notice == "Y":
             os.system(f'notepad "{file_path}"')
-            input("Press Enter once you're done editing...")
+            input(f"{Fore.BLUE}Press Enter once you're done editing... 🤸")
             break
         
         elif edit_notice == "N":
-            print("Okay! File saved without further edits made.")
+            print(f"{Fore.GREEN}Okay! File saved without further edits made 🎉 .")
             break
         
         else:
-            print("Invalid. Enter 'Y' for Yes and 'N' for No. Try Again!")
+            print(f"{Fore.RED}Invalid. Enter 'Y' for Yes and 'N' for No. Try Again!")
 
         
 if __name__ == "__main__":                        # only running program when called out
