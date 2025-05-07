@@ -9,11 +9,13 @@
 This program allows the user to:
 - Answer a randomized 5-item quiz (Topic: Earth Science)
 - Create their own 10-item quiz
+- Select a quiz file from the quizzes made earlier
+- Answer the 10 items quiz preferred (questions are randomized)
 
 📁 Output:
 - If you create a quiz, you will receive a `.txt` file with your quiz questions.
 - If you take the sample quiz, you'll receive a `.txt` file containing your **quiz history with scores**.
-
+- If you take a quiz from the quizzes you've made earlier, you'll receive a `.txt` file containing your **quiz history with scores**.
 ---
 
 ## ⚠️ NOTE
@@ -22,3 +24,4 @@ This program allows the user to:
 
   ```bash
   pip install pyfiglet
+  pip install colorama
