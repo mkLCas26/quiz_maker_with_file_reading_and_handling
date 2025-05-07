@@ -15,10 +15,6 @@ test = Figlet(font='elite')
 def clear_content():
     os.system('cls' if os.name == "nt" else "clear")
 
-# function for clearing screen
-def clear_content():
-    os.system('cls' if os.name == "nt" else "clear")
-
 # function that allows user to choose a quiz file from folder
 def list_avail_quizzes():
     quizzes = []
